@@ -88,9 +88,8 @@ The response should look like:
 * All classes given are meant to used as reference - once they are not needed, they can be removed.
 * This project uses [lombok](https://projectlombok.org/) - use it when possible
 * Properly organize your project with `.gitignore` file, `readme` file explaining how to run the project, etc.
-* Do all 2 parts, and use git tags to mark the commit fulfilling part 1 and part 2.
 
 ## Deliverables
-* Send us a link to a repository fulfilling the requirements with two tags to check part 1 and 2.
+* Send us a link to a repository fulfilling the requirements.
 * Your code will be tested using different tests.
 * Successful implementation will move to interview.
