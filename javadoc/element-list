@@ -1,0 +1,6 @@
+com.victorsanchez.exercise
+com.victorsanchez.exercise.dto
+com.victorsanchez.exercise.persistence
+com.victorsanchez.exercise.persistence.entity
+com.victorsanchez.exercise.persistence.repository
+com.victorsanchez.exercise.utils
