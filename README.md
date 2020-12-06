@@ -1,24 +1,28 @@
 Interview question
 ==================
+This is a very basic spring-boot app that serves 4 apis to create our custom forum. Run it (using `mvn spring-boot:run`) or your favorite IDE.
 
+For testing purposes you can execute the calls with Postman one time the app is running.
 
-This is a very basic spring-boot app. Run it (using `mvn spring-boot:run`) or your favorite IDE.
-Try the url `http://localhost:5000/greeting?name=David`, it should return the string: "Hello David".
+With this application you can run 4 different APIs:
 
-You should use this template to develop a forum system.
+ - Post new questions
+ - Post replies to questions
+ - Get a thread of a selected question
+ - Get a list of the questions stored
 
-# Requirements
-We want to develop 4 APIs:
+### `POST http://localhost:5000/questions`
+#### Post a new question in the forum.
+Example:
 
-### Post new question: `http://localhost:5000/questions`
-with body:
+JSON Body:
 ```json
 {
   "author": "Daniel",
   "message": "Message text"
 }
 ```
-Response should be 201:
+201 Status Response:
 ```json
 {
   "id": 1,
@@ -28,15 +32,18 @@ Response should be 201:
 }
 ```
 
-### Post a reply to a message: `http://localhost:5000/questions/{questionId}/reply`
-with body:
+### ` POST http://localhost:5000/questions/{questionId}/reply`
+#### Posts a new reply for the question passed as param. 
+Note: RecordNotFoundException can be thrown if the question attached to the reply is not found on the storage
+
+JSON Body:
 ```json
 {
   "author": "Reply author",
   "message": "Message reply text"
 }
 ```
-Response should be 201:
+201 Status response:
 ```json
 {
   "questionId": 1,
@@ -46,8 +53,11 @@ Response should be 201:
 }
 ```
 
-### Get a thread: `http://localhost:5000/questions/{questionId}`, 
-the response should look like:
+### `GET http://localhost:5000/questions/{questionId}` 
+#### Returns a thread of the question passed as param
+Note: RecordNotFoundException can be thrown if the selected question is not found on the storage
+
+200 Status response:
 ```json
 {
   "id": 1,
@@ -64,8 +74,9 @@ the response should look like:
 }
 ```
 
-### Get a list of questions: `http://localhost:5000/questions`
-The response should look like:
+### `GET http://localhost:5000/questions`
+#### Returns the list of all the threads stored
+200 Status response:
 ```json
 [
     {
@@ -77,19 +88,3 @@ The response should look like:
     ...
 ]
 ```
-
-## Guidelines
-* Fork this repository and push your commits
-* Use the spring-boot template given
-* Write unit-tests, integration-tests 
-  * Write in javadocs what scenarios are in test
-  * Higher coverage is better
-* Write code documentation
-* All classes given are meant to used as reference - once they are not needed, they can be removed.
-* This project uses [lombok](https://projectlombok.org/) - use it when possible
-* Properly organize your project with `.gitignore` file, `readme` file explaining how to run the project, etc.
-
-## Deliverables
-* Send us a link to a repository fulfilling the requirements.
-* Your code will be tested using different tests.
-* Successful implementation will move to interview.
